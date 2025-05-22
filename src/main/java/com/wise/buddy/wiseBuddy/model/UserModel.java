@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @Table(name = "user")
 public class UserModel {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Long Id;
     @Column(name = "name")
