@@ -4,18 +4,19 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "SUITABILITY")
 public class SuitabilityModel implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "suitability_id", nullable = false, unique = true)
     private Long suitabilityId;
 
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserModel user;
 
     @Column(name = "score", nullable = false)
     private Integer score;
@@ -39,12 +40,12 @@ public class SuitabilityModel implements Serializable {
         this.suitabilityId = suitabilityId;
     }
 
-    public Long getUserId() {
-        return userId;
+    public UserModel getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(UserModel user) {
+        this.user = user;
     }
 
     public Integer getScore() {
