@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
         user.setName(request.getName());
         user.setSurname(request.getSurname());
         user.setEmail(request.getEmail());
-        user.setPasswordHash(hashPassword(request.getPassword())); // hash simples
+        user.setPasswordHash(hashPassword(request.getPassword()));
         user.setIncomeRange(request.getIncomeRange());
         user.setSignOnDate(LocalDateTime.now());
 
