@@ -1,5 +1,6 @@
 package com.wise.buddy.wiseBuddy.service.impl;
 
+import com.wise.buddy.wiseBuddy.dto.SuitabilityJsonResponseDTO;
 import com.wise.buddy.wiseBuddy.dto.SuitabilityRequestDTO;
 import com.wise.buddy.wiseBuddy.model.SuitabilityModel;
 import com.wise.buddy.wiseBuddy.model.UserModel;
@@ -36,5 +37,12 @@ public class SuitabilityServiceImpl implements SuitabilityService {
         suitability.setJson(dto.getJson());
 
         return suitabilityRepository.save(suitability);
+    }
+
+    @Override
+    public SuitabilityJsonResponseDTO getSuitabilityJsonByUserId(Long userId) {
+        SuitabilityModel suitability = suitabilityRepository.findFirstByUser_Id(userId)
+                .orElseThrow(() -> new IllegalArgumentException("Suitability não encontrado para userId: " + userId));
+        return new SuitabilityJsonResponseDTO(suitability.getJson());
     }
 }

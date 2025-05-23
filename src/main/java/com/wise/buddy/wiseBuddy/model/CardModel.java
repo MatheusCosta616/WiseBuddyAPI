@@ -8,11 +8,13 @@ import java.io.Serializable;
 public class CardModel implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "card_id", length = 10)
     private Long cardId;
 
-    @Column(name = "user_id", length = 10, nullable = false)
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserModel user;
 
     @Column(name = "masked_number", length = 20, nullable = false)
     private String maskedNumber;
@@ -24,13 +26,13 @@ public class CardModel implements Serializable {
     private String brand;
 
     @Column(name = "expiration_date", length = 7, nullable = false)
-    private String expirationDate; // formato MM/YYYY
+    private String expirationDate;
 
     public CardModel() {}
 
-    public CardModel(Long cardId, Long userId, String maskedNumber, String token, String brand, String expirationDate) {
+    public CardModel(Long cardId, UserModel user, String maskedNumber, String token, String brand, String expirationDate) {
         this.cardId = cardId;
-        this.userId = userId;
+        this.user = user;
         this.maskedNumber = maskedNumber;
         this.token = token;
         this.brand = brand;
@@ -45,12 +47,12 @@ public class CardModel implements Serializable {
         this.cardId = cardId;
     }
 
-    public Long getUserId() {
-        return userId;
+    public UserModel getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(UserModel user) {
+        this.user = user;
     }
 
     public String getMaskedNumber() {

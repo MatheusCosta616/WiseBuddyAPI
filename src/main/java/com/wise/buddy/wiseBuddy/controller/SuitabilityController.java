@@ -1,8 +1,10 @@
 package com.wise.buddy.wiseBuddy.controller;
 
+import com.wise.buddy.wiseBuddy.dto.SuitabilityJsonResponseDTO;
 import com.wise.buddy.wiseBuddy.dto.SuitabilityRequestDTO;
 import com.wise.buddy.wiseBuddy.model.SuitabilityModel;
 import com.wise.buddy.wiseBuddy.service.SuitabilityService;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,4 +27,15 @@ public class SuitabilityController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+    @GetMapping("/history/{userId}")
+    public ResponseEntity<?> getSuitabilityJsonByUserId(@PathVariable Long userId) {
+        try {
+            SuitabilityJsonResponseDTO response = suitabilityService.getSuitabilityJsonByUserId(userId);
+            return ResponseEntity.ok(response);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }

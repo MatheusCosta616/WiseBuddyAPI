@@ -1,27 +1,29 @@
 package com.wise.buddy.wiseBuddy.model;
 
 import jakarta.persistence.*;
-
 import java.io.Serializable;
 import java.time.LocalDate;
-
 
 @Entity
 @Table(name = "RECOMMENDATION")
 public class RecommendationModel implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "recommendation_id", nullable = false, unique = true)
     private Long recommendationId;
 
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserModel user;
 
-    @Column(name = "session_id", nullable = false)
-    private Long sessionId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "session_id", nullable = false)
+    private SessionModel session;
 
-    @Column(name = "suitability_id", nullable = false)
-    private Long suitabilityId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "suitability_id", nullable = false)
+    private SuitabilityModel suitability;
 
     @Column(name = "input_json", length = 4000, nullable = false)
     private String inputJson;
@@ -42,28 +44,28 @@ public class RecommendationModel implements Serializable {
         this.recommendationId = recommendationId;
     }
 
-    public Long getUserId() {
-        return userId;
+    public UserModel getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(UserModel user) {
+        this.user = user;
     }
 
-    public Long getSessionId() {
-        return sessionId;
+    public SessionModel getSession() {
+        return session;
     }
 
-    public void setSessionId(Long sessionId) {
-        this.sessionId = sessionId;
+    public void setSession(SessionModel session) {
+        this.session = session;
     }
 
-    public Long getSuitabilityId() {
-        return suitabilityId;
+    public SuitabilityModel getSuitability() {
+        return suitability;
     }
 
-    public void setSuitabilityId(Long suitabilityId) {
-        this.suitabilityId = suitabilityId;
+    public void setSuitability(SuitabilityModel suitability) {
+        this.suitability = suitability;
     }
 
     public String getInputJson() {
@@ -104,11 +106,11 @@ public class RecommendationModel implements Serializable {
 
     @Override
     public String toString() {
-        return "Recommendation{" +
+        return "RecommendationModel{" +
                 "recommendationId=" + recommendationId +
-                ", userId=" + userId +
-                ", sessionId=" + sessionId +
-                ", suitabilityId=" + suitabilityId +
+                ", user=" + (user != null ? user.getId() : null) +
+                ", session=" + (session != null ? session.getSessionId() : null) +
+                ", suitability=" + (suitability != null ? suitability.getSuitabilityId() : null) +
                 ", inputJson='" + inputJson + '\'' +
                 ", outputJson='" + outputJson + '\'' +
                 ", requestDate=" + requestDate +

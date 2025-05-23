@@ -10,14 +10,17 @@ import java.time.LocalDate;
 public class PaymentModel implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "payment_id", length = 10)
     private Long paymentId;
 
-    @Column(name = "user_id", length = 10, nullable = false)
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserModel user;
 
-    @Column(name = "plan_id", length = 3, nullable = false)
-    private Long planId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "plan_id", nullable = false)
+    private PlanModel plan;
 
     @Column(name = "amount", precision = 10, scale = 2, nullable = false)
     private BigDecimal amount;
@@ -33,10 +36,10 @@ public class PaymentModel implements Serializable {
 
     public PaymentModel() {}
 
-    public PaymentModel(Long paymentId, Long userId, Long planId, BigDecimal amount, LocalDate paymentDate, String paymentMethod, String status) {
+    public PaymentModel(Long paymentId, UserModel user, PlanModel plan, BigDecimal amount, LocalDate paymentDate, String paymentMethod, String status) {
         this.paymentId = paymentId;
-        this.userId = userId;
-        this.planId = planId;
+        this.user = user;
+        this.plan = plan;
         this.amount = amount;
         this.paymentDate = paymentDate;
         this.paymentMethod = paymentMethod;
@@ -51,20 +54,20 @@ public class PaymentModel implements Serializable {
         this.paymentId = paymentId;
     }
 
-    public Long getUserId() {
-        return userId;
+    public UserModel getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(UserModel user) {
+        this.user = user;
     }
 
-    public Long getPlanId() {
-        return planId;
+    public PlanModel getPlan() {
+        return plan;
     }
 
-    public void setPlanId(Long planId) {
-        this.planId = planId;
+    public void setPlan(PlanModel plan) {
+        this.plan = plan;
     }
 
     public BigDecimal getAmount() {

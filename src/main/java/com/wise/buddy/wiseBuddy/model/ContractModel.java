@@ -13,20 +13,22 @@ public class ContractModel implements Serializable {
     @Column(name = "contract_id")
     private Long contractId;
 
-    @Column(name = "user_id", length = 10, nullable = false)
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserModel user;
 
-    @Column(name = "plan_id", length = 3, nullable = false)
-    private Long planId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "plan_id", nullable = false)
+    private PlanModel plan;
 
     @Column(name = "contract_date", nullable = false)
     private LocalDate contractDate;
 
     public ContractModel() {}
 
-    public ContractModel(Long userId, Long planId, LocalDate contractDate) {
-        this.userId = userId;
-        this.planId = planId;
+    public ContractModel(UserModel user, PlanModel plan, LocalDate contractDate) {
+        this.user = user;
+        this.plan = plan;
         this.contractDate = contractDate;
     }
 
@@ -38,20 +40,20 @@ public class ContractModel implements Serializable {
         this.contractId = contractId;
     }
 
-    public Long getUserId() {
-        return userId;
+    public UserModel getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(UserModel user) {
+        this.user = user;
     }
 
-    public Long getPlanId() {
-        return planId;
+    public PlanModel getPlan() {
+        return plan;
     }
 
-    public void setPlanId(Long planId) {
-        this.planId = planId;
+    public void setPlan(PlanModel plan) {
+        this.plan = plan;
     }
 
     public LocalDate getContractDate() {
