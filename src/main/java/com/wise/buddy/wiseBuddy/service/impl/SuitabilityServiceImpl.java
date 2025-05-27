@@ -9,6 +9,8 @@ import com.wise.buddy.wiseBuddy.repository.UserRepository;
 import com.wise.buddy.wiseBuddy.service.SuitabilityService;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -40,9 +42,13 @@ public class SuitabilityServiceImpl implements SuitabilityService {
     }
 
     @Override
-    public SuitabilityJsonResponseDTO getSuitabilityJsonByUserId(Long userId) {
-        SuitabilityModel suitability = suitabilityRepository.findFirstByUser_Id(userId)
-                .orElseThrow(() -> new IllegalArgumentException("Suitability não encontrado para userId: " + userId));
-        return new SuitabilityJsonResponseDTO(suitability.getJson());
+    public List<SuitabilityJsonResponseDTO> getSuitabilityJsonByUserId(Long userId) {
+        List<SuitabilityModel> suitabilityList = suitabilityRepository.findAllByUser_Id(userId);
+        if (suitabilityList.isEmpty()) {
+            throw new IllegalArgumentException("Suitability não encontrado para userId: " + userId);
+        }
+        return suitabilityList.stream()
+                .map(s -> new SuitabilityJsonResponseDTO(s.getJson()))
+                .toList();
     }
 }

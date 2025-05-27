@@ -4,7 +4,9 @@ import com.wise.buddy.wiseBuddy.dto.SuitabilityJsonResponseDTO;
 import com.wise.buddy.wiseBuddy.dto.SuitabilityRequestDTO;
 import com.wise.buddy.wiseBuddy.model.SuitabilityModel;
 
+import java.util.List;
+
 public interface SuitabilityService {
     SuitabilityModel cadastrarSuitability(SuitabilityRequestDTO dto);
-    SuitabilityJsonResponseDTO getSuitabilityJsonByUserId(Long userId);
+    List<SuitabilityJsonResponseDTO> getSuitabilityJsonByUserId(Long userId);
 }

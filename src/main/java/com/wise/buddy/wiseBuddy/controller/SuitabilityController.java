@@ -11,6 +11,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/wise-buddy/v1/suitabilities")
 @Tag(name = "Suitabilities", description = "Endpoints for managing suitabilities")
@@ -52,9 +54,9 @@ public class SuitabilityController {
             }
     )
     @GetMapping("/history/{userId}")
-    public ResponseEntity<?> getSuitabilityJsonByUserId(@PathVariable Long userId) {
+    public ResponseEntity<List<SuitabilityJsonResponseDTO>> getSuitabilityJsonByUserId(@PathVariable Long userId) {
         try {
-            SuitabilityJsonResponseDTO response = suitabilityService.getSuitabilityJsonByUserId(userId);
+            List<SuitabilityJsonResponseDTO> response = suitabilityService.getSuitabilityJsonByUserId(userId);
             return ResponseEntity.ok(response);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build();
