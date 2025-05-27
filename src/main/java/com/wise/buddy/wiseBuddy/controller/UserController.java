@@ -1,6 +1,7 @@
 package com.wise.buddy.wiseBuddy.controller;
 
 import com.wise.buddy.wiseBuddy.dto.LoginRequestDTO;
+import com.wise.buddy.wiseBuddy.dto.LoginResponseDTO;
 import com.wise.buddy.wiseBuddy.dto.RegisterRequestDTO;
 import com.wise.buddy.wiseBuddy.model.UserModel;
 import com.wise.buddy.wiseBuddy.service.UserService;
@@ -11,6 +12,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/wise-buddy/v1/users")
@@ -45,9 +48,9 @@ public class UserController {
     )
     @PostMapping("/login")
     public ResponseEntity<?> login(@Valid @RequestBody LoginRequestDTO request) {
-        boolean auth = userService.authenticateUser(request);
-        if (auth) {
-            return ResponseEntity.ok("Login realizado com sucesso!");
+        Optional<LoginResponseDTO> response = userService.authenticateUser(request);
+        if (response.isPresent()) {
+            return ResponseEntity.ok(response.get());
         } else {
             return ResponseEntity.status(401).body("Credenciais inválidas!");
         }

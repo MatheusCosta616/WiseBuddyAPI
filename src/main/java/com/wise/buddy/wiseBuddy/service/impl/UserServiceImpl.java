@@ -1,6 +1,7 @@
 package com.wise.buddy.wiseBuddy.service.impl;
 
 import com.wise.buddy.wiseBuddy.dto.LoginRequestDTO;
+import com.wise.buddy.wiseBuddy.dto.LoginResponseDTO;
 import com.wise.buddy.wiseBuddy.dto.RegisterRequestDTO;
 import com.wise.buddy.wiseBuddy.model.UserModel;
 import com.wise.buddy.wiseBuddy.repository.UserRepository;
@@ -26,7 +27,6 @@ public class UserServiceImpl implements UserService {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             byte[] hashedBytes = digest.digest(password.getBytes(StandardCharsets.UTF_8));
-            // converte para hex string
             StringBuilder sb = new StringBuilder();
             for (byte b : hashedBytes) {
                 sb.append(String.format("%02x", b));
@@ -51,12 +51,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean authenticateUser(LoginRequestDTO request) {
+    public Optional<LoginResponseDTO> authenticateUser(LoginRequestDTO request) {
         Optional<UserModel> userOptional = userRepository.findByEmail(request.getEmail());
         String hashedInput = hashPassword(request.getPassword());
-        return userOptional.filter(user ->
-                hashedInput.equals(user.getPasswordHash())
-        ).isPresent();
+        return userOptional
+                .filter(user -> hashedInput.equals(user.getPasswordHash()))
+                .map(user -> new LoginResponseDTO(user.getId(), user.getEmail(), user.getPasswordHash()));
     }
 
     @Override
