@@ -69,13 +69,22 @@ public class UserServiceImpl implements UserService {
         Optional<UserModel> userOptional = userRepository.findById(id);
         if (userOptional.isPresent()) {
             UserModel user = userOptional.get();
-            user.setName(request.getName());
-            user.setSurname(request.getSurname());
-            user.setEmail(request.getEmail());
+            if (request.getName() != null && !request.getName().isBlank()) {
+                user.setName(request.getName());
+            }
+            if (request.getSurname() != null && !request.getSurname().isBlank()) {
+                user.setSurname(request.getSurname());
+            }
+            if (request.getEmail() != null && !request.getEmail().isBlank()) {
+                user.setEmail(request.getEmail());
+            }
             if (request.getPassword() != null && !request.getPassword().isBlank()) {
                 user.setPasswordHash(hashPassword(request.getPassword()));
             }
-            user.setIncomeRange(request.getIncomeRange());
+            if (request.getIncomeRange() != null && !request.getIncomeRange().isBlank()) {
+                user.setIncomeRange(request.getIncomeRange());
+            }
+
             return userRepository.save(user);
         }
         return null;
