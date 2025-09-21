@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/wise-buddy/v1/sessions")
@@ -32,12 +34,14 @@ public class SessionsController {
             }
     )
     @PostMapping
-    public ResponseEntity<SessionResponseDTO> createSession(@RequestBody SessionRequestDTO dto) {
+    public ResponseEntity<?> createSession(@RequestBody SessionRequestDTO dto) {
         try {
             SessionResponseDTO response = sessionService.saveSession(dto);
             return ResponseEntity.ok(response);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().build();
+            Map<String, String> error = new HashMap<>();
+            error.put("error", e.getMessage());
+            return ResponseEntity.badRequest().body(error);
         }
     }
 
@@ -52,8 +56,14 @@ public class SessionsController {
             }
     )
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<SessionResponseDTO>> getSessionsByUserId(@PathVariable Long userId) {
-        List<SessionResponseDTO> sessions = sessionService.getSessionsByUserId(userId);
-        return ResponseEntity.ok(sessions);
+    public ResponseEntity<?> getSessionsByUserId(@PathVariable Long userId) {
+        try {
+            List<SessionResponseDTO> sessions = sessionService.getSessionsByUserId(userId);
+            return ResponseEntity.ok(sessions);
+        } catch (IllegalArgumentException e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("error", e.getMessage());
+            return ResponseEntity.status(404).body(error);
+        }
     }
 }

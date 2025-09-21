@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/wise-buddy/v1/suitabilities")
@@ -38,7 +40,9 @@ public class SuitabilityController {
             SuitabilityModel created = suitabilityService.cadastrarSuitability(dto);
             return ResponseEntity.ok(created);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            Map<String, String> error = new HashMap<>();
+            error.put("error", e.getMessage());
+            return ResponseEntity.badRequest().body(error);
         }
     }
 
@@ -54,12 +58,14 @@ public class SuitabilityController {
             }
     )
     @GetMapping("/history/{userId}")
-    public ResponseEntity<List<SuitabilityJsonResponseDTO>> getSuitabilityJsonByUserId(@PathVariable Long userId) {
+    public ResponseEntity<?> getSuitabilityJsonByUserId(@PathVariable Long userId) {
         try {
             List<SuitabilityJsonResponseDTO> response = suitabilityService.getSuitabilityJsonByUserId(userId);
             return ResponseEntity.ok(response);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
+            Map<String, String> error = new HashMap<>();
+            error.put("error", e.getMessage());
+            return ResponseEntity.status(404).body(error);
         }
     }
 }

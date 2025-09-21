@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/wise-buddy/v1/payments")
@@ -32,12 +34,14 @@ public class PaymentController {
             }
     )
     @PostMapping
-    public ResponseEntity<PaymentResponseDTO> createPayment(@RequestBody PaymentRequestDTO dto) {
+    public ResponseEntity<?> createPayment(@RequestBody PaymentRequestDTO dto) {
         try {
             PaymentResponseDTO response = paymentService.savePayment(dto);
             return ResponseEntity.ok(response);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().build();
+            Map<String, String> error = new HashMap<>();
+            error.put("error", e.getMessage());
+            return ResponseEntity.badRequest().body(error);
         }
     }
 
@@ -52,8 +56,14 @@ public class PaymentController {
             }
     )
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<PaymentResponseDTO>> getPaymentsByUserId(@PathVariable Long userId) {
-        List<PaymentResponseDTO> payments = paymentService.getPaymentsByUserId(userId);
-        return ResponseEntity.ok(payments);
+    public ResponseEntity<?> getPaymentsByUserId(@PathVariable Long userId) {
+        try {
+            List<PaymentResponseDTO> payments = paymentService.getPaymentsByUserId(userId);
+            return ResponseEntity.ok(payments);
+        } catch (IllegalArgumentException e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("error", e.getMessage());
+            return ResponseEntity.status(404).body(error);
+        }
     }
 }

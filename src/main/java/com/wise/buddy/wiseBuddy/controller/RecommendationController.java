@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/wise-buddy/v1/recommendations")
@@ -32,12 +34,14 @@ public class RecommendationController {
             }
     )
     @PostMapping("/request")
-    public ResponseEntity<RecommendationResponseDTO> createRecommendation(@RequestBody RecommendationRequestDTO dto) {
+    public ResponseEntity<?> createRecommendation(@RequestBody RecommendationRequestDTO dto) {
         try {
             RecommendationResponseDTO response = recommendationService.createRecommendation(dto);
             return ResponseEntity.ok(response);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body(null);
+            Map<String, String> error = new HashMap<>();
+            error.put("error", e.getMessage());
+            return ResponseEntity.badRequest().body(error);
         }
     }
 
@@ -52,9 +56,15 @@ public class RecommendationController {
             }
     )
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<RecommendationResponseDTO>> getRecommendationsByUserId(@PathVariable Long userId) {
-        List<RecommendationResponseDTO> responses = recommendationService.getRecommendationsByUserId(userId);
-        return ResponseEntity.ok(responses);
+    public ResponseEntity<?> getRecommendationsByUserId(@PathVariable Long userId) {
+        try {
+            List<RecommendationResponseDTO> responses = recommendationService.getRecommendationsByUserId(userId);
+            return ResponseEntity.ok(responses);
+        } catch (IllegalArgumentException e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("error", e.getMessage());
+            return ResponseEntity.status(404).body(error);
+        }
     }
 
     @Operation(
@@ -69,12 +79,14 @@ public class RecommendationController {
             }
     )
     @GetMapping("/{id}")
-    public ResponseEntity<RecommendationResponseDTO> getRecommendationById(@PathVariable Long id) {
+    public ResponseEntity<?> getRecommendationById(@PathVariable Long id) {
         try {
             RecommendationResponseDTO response = recommendationService.getRecommendationById(id);
             return ResponseEntity.ok(response);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
+            Map<String, String> error = new HashMap<>();
+            error.put("error", e.getMessage());
+            return ResponseEntity.status(404).body(error);
         }
     }
 }

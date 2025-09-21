@@ -32,14 +32,12 @@ public class CardController {
             }
     )
     @PostMapping
-    public ResponseEntity<CardResponseDTO> createCard(
-            @RequestBody CardRequestDTO dto
-    ) {
+    public ResponseEntity<CardResponseDTO> createCard(@RequestBody CardRequestDTO dto) {
         try {
             CardResponseDTO response = cardService.saveCard(dto);
             return ResponseEntity.ok(response);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest().body(null);
         }
     }
 

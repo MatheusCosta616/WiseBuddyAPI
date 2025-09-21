@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/wise-buddy/v1/contracts")
@@ -32,12 +34,14 @@ public class ContractController {
             }
     )
     @PostMapping
-    public ResponseEntity<ContractResponseDTO> createContract(@RequestBody ContractRequestDTO dto) {
+    public ResponseEntity<?> createContract(@RequestBody ContractRequestDTO dto) {
         try {
             ContractResponseDTO response = contractService.saveContract(dto);
             return ResponseEntity.ok(response);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().build();
+            Map<String, String> error = new HashMap<>();
+            error.put("error", e.getMessage());
+            return ResponseEntity.badRequest().body(error);
         }
     }
 
@@ -52,8 +56,14 @@ public class ContractController {
             }
     )
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<ContractResponseDTO>> getContractsByUserId(@PathVariable Long userId) {
-        List<ContractResponseDTO> contracts = contractService.getContractsByUserId(userId);
-        return ResponseEntity.ok(contracts);
+    public ResponseEntity<?> getContractsByUserId(@PathVariable Long userId) {
+        try {
+            List<ContractResponseDTO> contracts = contractService.getContractsByUserId(userId);
+            return ResponseEntity.ok(contracts);
+        } catch (IllegalArgumentException e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("error", e.getMessage());
+            return ResponseEntity.status(404).body(error);
+        }
     }
 }

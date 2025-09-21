@@ -14,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/wise-buddy/v1/users")
@@ -52,7 +54,9 @@ public class UserController {
         if (response.isPresent()) {
             return ResponseEntity.ok(response.get());
         } else {
-            return ResponseEntity.status(401).body("Credenciais inválidas!");
+            Map<String, String> error = new HashMap<>();
+            error.put("error", "Credenciais inválidas!");
+            return ResponseEntity.status(401).body(error);
         }
     }
 
@@ -73,7 +77,9 @@ public class UserController {
         if (user != null) {
             return ResponseEntity.ok(user);
         } else {
-            return ResponseEntity.notFound().build();
+            Map<String, String> error = new HashMap<>();
+            error.put("error", "Usuário não encontrado!");
+            return ResponseEntity.status(404).body(error);
         }
     }
 
@@ -94,7 +100,9 @@ public class UserController {
         if (updated != null) {
             return ResponseEntity.ok(updated);
         } else {
-            return ResponseEntity.notFound().build();
+            Map<String, String> error = new HashMap<>();
+            error.put("error", "Usuário não encontrado para atualização!");
+            return ResponseEntity.status(404).body(error);
         }
     }
 }

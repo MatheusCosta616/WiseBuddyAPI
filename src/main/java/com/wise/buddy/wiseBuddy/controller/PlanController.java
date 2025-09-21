@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/wise-buddy/v1/plans")
@@ -29,8 +31,14 @@ public class PlanController {
             }
     )
     @GetMapping
-    public ResponseEntity<List<PlanResponseDTO>> getAllPlans() {
-        List<PlanResponseDTO> plans = planService.getAllPlans();
-        return ResponseEntity.ok(plans);
+    public ResponseEntity<?> getAllPlans() {
+        try {
+            List<PlanResponseDTO> plans = planService.getAllPlans();
+            return ResponseEntity.ok(plans);
+        } catch (IllegalArgumentException e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("error", e.getMessage());
+            return ResponseEntity.badRequest().body(error);
+        }
     }
 }
