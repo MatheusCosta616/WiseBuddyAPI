@@ -25,7 +25,6 @@ API para gerenciamento de usuários, contratos, pagamentos, planos, cartões, se
 - **Docker** (containerização do banco)
 - **Swagger/OpenAPI** (documentação dos endpoints)
 - **Lombok** (facilita geração de código)
-- **JUnit** (testes unitários)
 
 ---
 
