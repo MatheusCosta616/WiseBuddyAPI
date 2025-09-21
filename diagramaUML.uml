@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/projetos/WiseBuddyAPI/src/main/java/com/wise/buddy/wiseBuddy</OriginalElement>
+  <nodes>
+    <node x="313.5" y="726.0">com.wise.buddy.wiseBuddy.dto.RegisterRequestDTO</node>
+    <node x="333.0" y="1266.0">com.wise.buddy.wiseBuddy.model.PlanModel</node>
+    <node x="272.5" y="906.0">com.wise.buddy.wiseBuddy.service.impl.PlanServiceImpl</node>
+    <node x="291.0" y="1546.0">com.wise.buddy.wiseBuddy.service.ContractService</node>
+    <node x="284.5" y="1086.0">com.wise.buddy.wiseBuddy.dto.PaymentResponseDTO</node>
+    <node x="138.0" y="1926.0">com.wise.buddy.wiseBuddy.dto.RecommendationRequestDTO</node>
+    <node x="81.5" y="1726.0">com.wise.buddy.wiseBuddy.dto.SuitabilityJsonResponseDTO</node>
+    <node x="155.0" y="126.0">com.wise.buddy.wiseBuddy.repository.PlanRepository</node>
+    <node x="330.5" y="2426.0">com.wise.buddy.wiseBuddy.service.impl.CardServiceImpl</node>
+    <node x="151.5" y="1326.0">com.wise.buddy.wiseBuddy.service.impl.SuitabilityServiceImpl</node>
+    <node x="216.5" y="586.0">com.wise.buddy.wiseBuddy.repository.SessionsRepository</node>
+    <node x="187.5" y="2246.0">com.wise.buddy.wiseBuddy.dto.SuitabilityRequestDTO</node>
+    <node x="332.0" y="266.0">com.wise.buddy.wiseBuddy.model.SuitabilityModel</node>
+    <node x="23.5" y="1866.0">com.wise.buddy.wiseBuddy.dto.LoginRequestDTO</node>
+    <node x="206.5" y="326.0">com.wise.buddy.wiseBuddy.dto.CardRequestDTO</node>
+    <node x="171.0" y="2366.0">com.wise.buddy.wiseBuddy.dto.ContractRequestDTO</node>
+    <node x="107.0" y="266.0">com.wise.buddy.wiseBuddy.service.UserService</node>
+    <node x="84.5" y="1606.0">com.wise.buddy.wiseBuddy.repository.RecommendationRepository</node>
+    <node x="55.5" y="186.0">com.wise.buddy.wiseBuddy.model.ContractModel</node>
+    <node x="38.5" y="1086.0">com.wise.buddy.wiseBuddy.service.impl.SessionServiceImpl</node>
+    <node x="-7.0" y="326.0">com.wise.buddy.wiseBuddy.repository.CardRepository</node>
+    <node x="91.0" y="2186.0">com.wise.buddy.wiseBuddy.model.CardModel</node>
+    <node x="122.5" y="2066.0">com.wise.buddy.wiseBuddy.model.RecommendationModel</node>
+    <node x="4.0" y="1266.0">com.wise.buddy.wiseBuddy.dto.ContractResponseDTO</node>
+    <node x="94.5" y="646.0">com.wise.buddy.wiseBuddy.dto.SessionRequestDTO</node>
+    <node x="-138.0" y="2246.0">com.wise.buddy.wiseBuddy.service.impl.RecommendationServiceImpl</node>
+    <node x="-12.5" y="906.0">com.wise.buddy.wiseBuddy.dto.SessionResponseDTO</node>
+    <node x="231.0" y="446.0">com.wise.buddy.wiseBuddy.service.impl.UserServiceImpl</node>
+    <node x="186.5" y="1466.0">com.wise.buddy.wiseBuddy.WiseBuddyApplication</node>
+    <node x="366.5" y="2186.0">com.wise.buddy.wiseBuddy.service.CardService</node>
+    <node x="-43.0" y="1546.0">com.wise.buddy.wiseBuddy.controller.SuitabilityController</node>
+    <node x="-8.5" y="726.0">com.wise.buddy.wiseBuddy.service.PaymentService</node>
+    <node x="-128.5" y="1606.0">com.wise.buddy.wiseBuddy.model.UserModel</node>
+    <node x="-39.0" y="1786.0">com.wise.buddy.wiseBuddy.controller.PaymentController</node>
+    <node x="-44.0" y="126.0">com.wise.buddy.wiseBuddy.controller.CardController</node>
+    <node x="-49.0" y="2426.0">com.wise.buddy.wiseBuddy.dto.RecommendationResponseDTO</node>
+    <node x="61.5" y="1406.0">com.wise.buddy.wiseBuddy.dto.PlanResponseDTO</node>
+    <node x="-128.5" y="1926.0">com.wise.buddy.wiseBuddy.dto.PaymentRequestDTO</node>
+    <node x="-144.5" y="966.0">com.wise.buddy.wiseBuddy.service.impl.PaymentServiceImpl</node>
+    <node x="99.5" y="506.0">com.wise.buddy.wiseBuddy.controller.SessionsController</node>
+    <node x="275.0" y="1786.0">com.wise.buddy.wiseBuddy.service.impl.ContractServiceImpl</node>
+    <node x="-3.5" y="586.0">com.wise.buddy.wiseBuddy.controller.UserController</node>
+    <node x="-41.0" y="-14.0">com.wise.buddy.wiseBuddy.model.SessionModel</node>
+    <node x="-20.5" y="446.0">com.wise.buddy.wiseBuddy.dto.CardResponseDTO</node>
+    <node x="-146.0" y="786.0">com.wise.buddy.wiseBuddy.repository.SuitabilityRepository</node>
+    <node x="-139.5" y="2066.0">com.wise.buddy.wiseBuddy.controller.ContractController</node>
+    <node x="-22.0" y="2006.0">com.wise.buddy.wiseBuddy.service.RecommendationService</node>
+    <node x="-146.5" y="186.0">com.wise.buddy.wiseBuddy.repository.UserRepository</node>
+    <node x="154.5" y="966.0">com.wise.buddy.wiseBuddy.service.SessionService</node>
+    <node x="228.5" y="786.0">com.wise.buddy.wiseBuddy.service.PlanService</node>
+    <node x="-64.0" y="1146.0">com.wise.buddy.wiseBuddy.model.PaymentModel</node>
+    <node x="-142.0" y="506.0">com.wise.buddy.wiseBuddy.repository.PaymentRepository</node>
+    <node x="167.5" y="1146.0">com.wise.buddy.wiseBuddy.service.SuitabilityService</node>
+    <node x="-132.5" y="1466.0">com.wise.buddy.wiseBuddy.controller.RecommendationController</node>
+    <node x="-142.0" y="46.0">com.wise.buddy.wiseBuddy.controller.PlanController</node>
+    <node x="-143.5" y="646.0">com.wise.buddy.wiseBuddy.dto.LoginResponseDTO</node>
+    <node x="-122.5" y="1326.0">com.wise.buddy.wiseBuddy.repository.ContractRepository</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.wise.buddy.wiseBuddy.service.impl.PaymentServiceImpl" target="com.wise.buddy.wiseBuddy.service.PaymentService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-42.0" y="880.0" />
+      <point x="78.0" y="880.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.wise.buddy.wiseBuddy.service.impl.SessionServiceImpl" target="com.wise.buddy.wiseBuddy.service.SessionService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="138.0" y="1060.0" />
+      <point x="238.0" y="1060.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.wise.buddy.wiseBuddy.service.impl.CardServiceImpl" target="com.wise.buddy.wiseBuddy.service.CardService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="418.0" y="2400.0" />
+      <point x="438.0" y="2400.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.wise.buddy.wiseBuddy.service.impl.RecommendationServiceImpl" target="com.wise.buddy.wiseBuddy.service.RecommendationService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="-2.0" y="2160.0" />
+      <point x="98.0" y="2160.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.wise.buddy.wiseBuddy.service.impl.UserServiceImpl" target="com.wise.buddy.wiseBuddy.service.UserService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="318.0" y="420.0" />
+      <point x="178.0" y="420.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.wise.buddy.wiseBuddy.service.impl.ContractServiceImpl" target="com.wise.buddy.wiseBuddy.service.ContractService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.wise.buddy.wiseBuddy.service.impl.SuitabilityServiceImpl" target="com.wise.buddy.wiseBuddy.service.SuitabilityService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+    <edge source="com.wise.buddy.wiseBuddy.service.impl.PlanServiceImpl" target="com.wise.buddy.wiseBuddy.service.PlanService" relationship="REALIZATION">
+      <point x="0.0" y="-14.0" />
+      <point x="358.0" y="880.0" />
+      <point x="298.0" y="880.0" />
+      <point x="0.0" y="14.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.34289590032154343" showDependencies="false" x="760.4845091933671" y="388.56170128409263" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
