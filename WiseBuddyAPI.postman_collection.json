@@ -6,6 +6,70 @@
   },
   "item": [
     {
+      "name": "CardController",
+      "item": [
+        {
+          "name": "Criar cartão",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 1,\n  \"cardNumber\": \"1234 5678 9012 3456\",\n  \"cardType\": \"credit\",\n  \"expirationDate\": \"12/28\",\n  \"cvv\": \"123\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/wise-buddy/v1/cards",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["wise-buddy", "v1", "cards"]
+            }
+          }
+        },
+        {
+          "name": "Listar todos os cartões",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/wise-buddy/v1/cards",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["wise-buddy", "v1", "cards"]
+            }
+          }
+        },
+        {
+          "name": "Listar cartões por usuário",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/wise-buddy/v1/cards/user/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["wise-buddy", "v1", "cards", "user", "1"]
+            }
+          }
+        },
+        {
+          "name": "Deletar cartão por ID",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:8080/wise-buddy/v1/cards/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["wise-buddy", "v1", "cards", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
       "name": "UserController",
       "item": [
         {
