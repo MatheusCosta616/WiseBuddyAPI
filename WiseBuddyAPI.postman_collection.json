@@ -10,33 +10,33 @@
       "item": [
         {
           "name": "Criar cartão",
-          "request": {
-            "method": "POST",
-            "header": [
-              { "key": "Content-Type", "value": "application/json" }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"userId\": 1,\n  \"cardNumber\": \"1234 5678 9012 3456\",\n  \"cardType\": \"credit\",\n  \"expirationDate\": \"12/28\",\n  \"cvv\": \"123\"\n}"
-            },
-            "url": {
-              "raw": "http://localhost:8080/wise-buddy/v1/cards",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8080",
-              "path": ["wise-buddy", "v1", "cards"]
+            "request": {
+              "method": "POST",
+              "header": [
+                { "key": "Content-Type", "value": "application/json" }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"userId\": 1,\n  \"cardNumber\": \"1234 5678 9012 3456\",\n  \"cardType\": \"credit\",\n  \"expirationDate\": \"12/28\",\n  \"cvv\": \"123\"\n}"
+              },
+              "url": {
+                "raw": "http://localhost:8085/wise-buddy/v1/cards",
+                "protocol": "http",
+                "host": ["localhost"],
+                "port": "8085",
+                "path": ["wise-buddy", "v1", "cards"]
+              }
             }
-          }
         },
         {
           "name": "Listar todos os cartões",
           "request": {
             "method": "GET",
             "url": {
-              "raw": "http://localhost:8080/wise-buddy/v1/cards",
+              "raw": "http://localhost:8085/wise-buddy/v1/cards",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8085",
               "path": ["wise-buddy", "v1", "cards"]
             }
           }
@@ -46,10 +46,10 @@
           "request": {
             "method": "GET",
             "url": {
-              "raw": "http://localhost:8080/wise-buddy/v1/cards/user/1",
+              "raw": "http://localhost:8085/wise-buddy/v1/cards/user/1",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8085",
               "path": ["wise-buddy", "v1", "cards", "user", "1"]
             }
           }
@@ -59,10 +59,10 @@
           "request": {
             "method": "DELETE",
             "url": {
-              "raw": "http://localhost:8080/wise-buddy/v1/cards/1",
+              "raw": "http://localhost:8085/wise-buddy/v1/cards/1",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8085",
               "path": ["wise-buddy", "v1", "cards", "1"]
             }
           }
@@ -84,10 +84,10 @@
               "raw": "{\n  \"nome\": \"João Silva\",\n  \"email\": \"joao@email.com\",\n  \"senha\": \"123456\"\n}"
             },
             "url": {
-              "raw": "http://localhost:8080/wise-buddy/v1/users/register",
+              "raw": "http://localhost:8085/wise-buddy/v1/users/register",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8085",
               "path": ["wise-buddy", "v1", "users", "register"]
             }
           }
@@ -104,10 +104,10 @@
               "raw": "{\n  \"email\": \"joao@email.com\",\n  \"senha\": \"123456\"\n}"
             },
             "url": {
-              "raw": "http://localhost:8080/wise-buddy/v1/users/login",
+              "raw": "http://localhost:8085/wise-buddy/v1/users/login",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8085",
               "path": ["wise-buddy", "v1", "users", "login"]
             }
           }
@@ -117,10 +117,10 @@
           "request": {
             "method": "GET",
             "url": {
-              "raw": "http://localhost:8080/wise-buddy/v1/users/1",
+              "raw": "http://localhost:8085/wise-buddy/v1/users/1",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8085",
               "path": ["wise-buddy", "v1", "users", "1"]
             }
           }
@@ -137,10 +137,10 @@
               "raw": "{\n  \"nome\": \"João Atualizado\",\n  \"email\": \"joao@email.com\",\n  \"senha\": \"novaSenha\"\n}"
             },
             "url": {
-              "raw": "http://localhost:8080/wise-buddy/v1/users/1",
+              "raw": "http://localhost:8085/wise-buddy/v1/users/1",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8085",
               "path": ["wise-buddy", "v1", "users", "1"]
             }
           }
@@ -162,10 +162,10 @@
               "raw": "{\n  \"userId\": 1,\n  \"planId\": 2,\n  \"contractDate\": \"2025-09-20\"\n}"
             },
             "url": {
-              "raw": "http://localhost:8080/wise-buddy/v1/contracts",
+              "raw": "http://localhost:8085/wise-buddy/v1/contracts",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8085",
               "path": ["wise-buddy", "v1", "contracts"]
             }
           }
@@ -175,10 +175,10 @@
           "request": {
             "method": "GET",
             "url": {
-              "raw": "http://localhost:8080/wise-buddy/v1/contracts/user/1",
+              "raw": "http://localhost:8085/wise-buddy/v1/contracts/user/1",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8085",
               "path": ["wise-buddy", "v1", "contracts", "user", "1"]
             }
           }
@@ -193,10 +193,10 @@
           "request": {
             "method": "GET",
             "url": {
-              "raw": "http://localhost:8080/wise-buddy/v1/plans",
+              "raw": "http://localhost:8085/wise-buddy/v1/plans",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8085",
               "path": ["wise-buddy", "v1", "plans"]
             }
           }
@@ -218,10 +218,10 @@
               "raw": "{\n  \"userId\": 1,\n  \"planId\": 2,\n  \"amount\": 100.00,\n  \"paymentDate\": \"2025-09-20\"\n}"
             },
             "url": {
-              "raw": "http://localhost:8080/wise-buddy/v1/payments",
+              "raw": "http://localhost:8085/wise-buddy/v1/payments",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8085",
               "path": ["wise-buddy", "v1", "payments"]
             }
           }
@@ -231,10 +231,10 @@
           "request": {
             "method": "GET",
             "url": {
-              "raw": "http://localhost:8080/wise-buddy/v1/payments/user/1",
+              "raw": "http://localhost:8085/wise-buddy/v1/payments/user/1",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8085",
               "path": ["wise-buddy", "v1", "payments", "user", "1"]
             }
           }
@@ -256,10 +256,10 @@
               "raw": "{\n  \"userId\": 1,\n  \"sessionId\": 1,\n  \"suitabilityId\": 1,\n  \"recommendation\": \"Exemplo de recomendação\"\n}"
             },
             "url": {
-              "raw": "http://localhost:8080/wise-buddy/v1/recommendations/request",
+              "raw": "http://localhost:8085/wise-buddy/v1/recommendations/request",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8085",
               "path": ["wise-buddy", "v1", "recommendations", "request"]
             }
           }
@@ -269,10 +269,10 @@
           "request": {
             "method": "GET",
             "url": {
-              "raw": "http://localhost:8080/wise-buddy/v1/recommendations/user/1",
+              "raw": "http://localhost:8085/wise-buddy/v1/recommendations/user/1",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8085",
               "path": ["wise-buddy", "v1", "recommendations", "user", "1"]
             }
           }
@@ -282,10 +282,10 @@
           "request": {
             "method": "GET",
             "url": {
-              "raw": "http://localhost:8080/wise-buddy/v1/recommendations/1",
+              "raw": "http://localhost:8085/wise-buddy/v1/recommendations/1",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8085",
               "path": ["wise-buddy", "v1", "recommendations", "1"]
             }
           }
@@ -307,10 +307,10 @@
               "raw": "{\n  \"userId\": 1,\n  \"sessionDate\": \"2025-09-20\"\n}"
             },
             "url": {
-              "raw": "http://localhost:8080/wise-buddy/v1/sessions",
+              "raw": "http://localhost:8085/wise-buddy/v1/sessions",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8085",
               "path": ["wise-buddy", "v1", "sessions"]
             }
           }
@@ -320,10 +320,10 @@
           "request": {
             "method": "GET",
             "url": {
-              "raw": "http://localhost:8080/wise-buddy/v1/sessions/user/1",
+              "raw": "http://localhost:8085/wise-buddy/v1/sessions/user/1",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8085",
               "path": ["wise-buddy", "v1", "sessions", "user", "1"]
             }
           }
@@ -345,10 +345,10 @@
               "raw": "{\n  \"userId\": 1,\n  \"json\": \"{\\\"perfil\\\": \\\"Conservador\\\"}\"\n}"
             },
             "url": {
-              "raw": "http://localhost:8080/wise-buddy/v1/suitabilities",
+              "raw": "http://localhost:8085/wise-buddy/v1/suitabilities",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8085",
               "path": ["wise-buddy", "v1", "suitabilities"]
             }
           }
@@ -358,10 +358,10 @@
           "request": {
             "method": "GET",
             "url": {
-              "raw": "http://localhost:8080/wise-buddy/v1/suitabilities/history/1",
+              "raw": "http://localhost:8085/wise-buddy/v1/suitabilities/history/1",
               "protocol": "http",
               "host": ["localhost"],
-              "port": "8080",
+              "port": "8085",
               "path": ["wise-buddy", "v1", "suitabilities", "history", "1"]
             }
           }
