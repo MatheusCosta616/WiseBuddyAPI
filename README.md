@@ -25,6 +25,7 @@ API para gerenciamento de usuários, contratos, pagamentos, planos, cartões, se
 - **Docker** (containerização do banco)
 - **Swagger/OpenAPI** (documentação dos endpoints)
 - **Lombok** (facilita geração de código)
+- **JUnit** (testes unitários)
 
 ---
 
@@ -38,7 +39,15 @@ Execute o comando abaixo para criar e iniciar o banco de dados `wisebuddy`:
 docker run --name wisebuddy-mysql -e MYSQL_ROOT_PASSWORD=123 -e MYSQL_DATABASE=wisebuddy -p 3306:3306 -d mysql:8.0
 ```
 
-### 2. Rodando a API
+### 2. Configurando a Porta da API
+
+Defina a porta 8085 no arquivo `src/main/resources/application.properties` (crie se não existir):
+
+```properties
+server.port=8085
+```
+
+### 3. Rodando a API
 
 1. **Clone o repositório**
 2. **Configure o `application.properties`** conforme necessário (usuário, senha, URL do banco etc)
@@ -58,7 +67,7 @@ mvn spring-boot:run
 
 Após iniciar a API, acesse a documentação interativa pelo navegador:
 
-[http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+[http://localhost:8085/swagger-ui/index.html](http://localhost:8085/swagger-ui/index.html)
 
 ---
 
@@ -288,9 +297,10 @@ Content-Type: application/json
 
 ### Observações
 
-- A porta padrão da API é **8080**.
+- A porta padrão da API agora é **8085**.
 - A porta padrão do banco de dados MySQL é **3306**.
 - O usuário padrão do MySQL é **root** e a senha é **123** (conforme comando acima).
 - Certifique-se de que a porta 3306 não esteja em uso por outro serviço MySQL local.
+- Caso utilize outro perfil/ambiente, garanta que `server.port=8085` esteja definido ou sobrescrito corretamente.
 
 ---
